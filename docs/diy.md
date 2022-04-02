@@ -25,7 +25,7 @@ const pageModule = new PageModule('integral-module');
 module.exports = async function demo(params, context) {
     await  pageModule.callMethod('setInviteStatus'{
         openId: params.openId,
-        status: 3, // todo 补充枚举值 
+        status: 3, // 任务中(0)任务完成(1)奖励已发(2)邀请失败(3)
         failureReason: '非新用户'
     })
 }
