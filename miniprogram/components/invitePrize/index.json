@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "inviteCard":"../_base/inviteCard/index",
+    "t-cell": "tdesign-miniprogram/cell/cell",
+    "inviteAccept":"../inviteAccept/index"    
+  }
+}

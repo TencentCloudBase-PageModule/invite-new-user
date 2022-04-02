@@ -1,0 +1,127 @@
+<view class="page-module-invite-wrap">
+  <view class="page-module-invite-top">
+    <!-- 页面金币 start -->
+    <view class="page-module-invite-top-dot dot--s position-left"></view>
+    <view class="page-module-invite-top-dot dot--m postion-right-top"></view>
+    <view class="page-module-invite-top-dot dot--s postion-right-bottom"></view>
+    <view class="page-module-invite-top-gold gold-blurry-right"></view>
+    <!-- 页面金币 end -->
+    <view class="page-module-invite-top__title">{{activityData.invitePageSetting.title}}</view>
+    <view class="page-module-invite-top-box-wrap initiative">
+      <view class="page-module-invite-top-box initiative">
+        <view class="page-module-invite-top__hd {{activityData.inviteesPrizeInfo.prizeType === 'integral' ? 'integral-num':''}} ">
+          <view class="page-module-invite-top-hd__desc">{{activityData.invitePageSetting.copywriting[0]}}</view>
+
+          <view class="page-module-invite-top-hd__integral ">
+            <text class="page-module-invite-top-hd__integral-text">{{activityData.inviterPrizeInfo.prizeType === 'integral' ? activityData.inviterPrizeInfo.faceValue : activityData.inviterPrizeInfo.prizeName}}</text>
+            <text class="page-module-invite-top-hd__integral-unit" wx:if="{{activityData.inviterPrizeInfo.prizeType === 'integral'}}">积分</text>
+          </view>
+          <view class="page-module-invite-top-hd__btn">{{activityData.invitePageSetting.copywriting[1]}}</view>
+        </view>
+        <view class="page-module-invite-top__bd">
+          <view class="page-module-invite-top__bd-friend">好友可得{{activityData.inviteesPrizeInfo.prizeName}}</view>
+          <button bindtap="getUserProfile" class="page-module-invite-share-btns" wx:if="{{!userStatus}}">
+            <text class="page-module-invite-share-btns__icon-wx"></text>
+            <text class="page-module-invite-share-btns__text">{{activityData.invitePageSetting.btnTitle}}</text>
+          </button>
+          <button bindtap="setInviteRecord" open-type="share" class="page-module-invite-share-btns" wx:else="{{!userStatus}}">
+            <text class="page-module-invite-share-btns__icon-wx"></text>
+            <text class="page-module-invite-share-btns__text">{{activityData.invitePageSetting.btnTitle}}</text>
+          </button>
+        </view>
+      </view>
+    
+    </view>
+   
+  </view>
+
+  <inviteCard centerAlign="true" cardTitle="参与步骤" extclass="page-module-invite-step">
+    <view class="invite-step-item  ">
+      <view class="step-num num1"></view>
+      <view class="invite-step-item__text step-item-s">{{activityData.participationSteps[0] || ''}}</view>
+    </view>
+    <view class="invite-step-item step-arrow">
+      <view class="step-arrow-icon"></view>
+    </view>
+    <view class="invite-step-item  ">
+      <view class="step-num num2"></view>
+      <view class="invite-step-item__text step-item-m">{{activityData.participationSteps[1] || ''}}</view>
+    </view>
+  </inviteCard>
+
+
+  <!-- 额外奖励  -->
+
+  <inviteCard leftAlign="true" cardTitle="额外奖励" extclass="page-module-invite-award">
+    <view class="page-module-invite-award-box">
+      <view class="page-module-invite-award-item" wx:for="{{activityData.extraPrize}}" wx:key="key" wx:for-item="items">
+        <view class="page-module-invite-award-con">
+          <view class="page-module-invite-award-item-hd">
+            <image class="page-module-invite-award-item-hd__img" src="{{items.prizeImg}}" alt="" />
+          </view>
+          <view class="page-module-invite-award-item-bd">{{items.prizeName}}</view>
+        </view>
+        <view class="page-module-invite-award-person">
+          <view class="page-module-invite-award-person-bar">
+            <view class="page-module-invite-award-person-bar-dot {{userRecord.total >= items.inviteNum ? 'active': ''}}"></view>
+          </view>
+          <view class="page-module-invite-award-person-text">邀请{{items.inviteNum}}人</view>
+        </view>
+      </view>
+    </view>
+  </inviteCard>
+
+  <!-- 邀请记录 -->
+  <inviteCard leftAlign="true" cardTitle="邀请记录" extclass="page-module-invite-record none" wx:if="{{userRecord.data.length === 0}}">
+    <view class="page-module-invite-record__alert">
+      <view class="invite-record-alert__title">邀请且完成任务 <text class="invite-theme-text">{{userRecord.total}}</text> 人</view>
+      <view class="invite-record-alert__desc">{{activityData.inviteRecordDesc}}</view>
+    </view>
+    <view class="page-module-invite-record-blank">
+      <image class="page-module-invite-record-blank-img" src="https://imgcache.qq.com/open_proj/proj_qcloud_v2/scene-module/Invite-prize/miniprogram/images/invite-record--blank.png" />
+      <view class="page-module-invite-record-blank__text">暂无奖励，快去邀请好友吧</view>
+    </view>
+  </inviteCard>
+  <inviteCard leftAlign="true" cardTitle="邀请记录" extclass="page-module-invite-record " wx:else="{{userRecord.data.length === 0}}">
+    <view class="page-module-invite-record__alert">
+      <view class="invite-record-alert__title">邀请且完成任务 <text class="invite-theme-text">{{userRecord.total}}</text> 人</view>
+
+      <view class="invite-record-alert__desc">{{activityData.inviteRecordDesc}}</view>
+    </view>
+    <view class="page-module-invite-record-detalis" wx:for="{{userRecord.data}}" wx:key="_id">
+      <t-cell title="{{item.inviteesUserName}}" description="{{item.status === 3 ?'好友非新用户':'好友为新用户'}}" align="top" t-class-image="title-image-large" image="{{item.avatar || 'https://ue.qzone.qq.com/48'}}" class="invite-record-cell">
+        <view slot="right-icon" class="invite-record-cell-right">
+          <button style="width: auto;padding: 0;" open-type="share" class="page-module-invite-share-btns" wx:if="{{item.status === 0}}">
+            <text class="invite-record-cell-right__btns">邀请完成任务</text>
+          </button>
+          <view class="invite-record-cell-right__status" wx:else="{{item.status === 0}}">{{item.status === 1 ? '任务完成':item.status === 2?'奖励已发':'邀请失败'}}</view>
+          <view>{{item.created_At}}</view>
+        </view>
+      </t-cell>
+    </view>
+  </inviteCard>
+  <!-- 邀请攻略 -->
+  <inviteCard centerAlign="true" cardTitle="邀请攻略" extclass="page-module-invite-raiders">
+    <view class="page-module-invite-rich">
+      <rich-text nodes="{{activityData.inviteGuide}}"></rich-text>
+
+    </view>
+  </inviteCard>
+  <!-- 底部  -->
+  <view class="page-module-invite-bottom " style="display: {{footerShow ? '': 'none'}};">
+    <view class="page-module-invite-share-btns">
+      <button bindtap="getUserProfile" class="page-module-invite-share-btns" wx:if="{{!userStatus}}">
+        <text class="page-module-invite-share-btns__icon-wx"></text>
+        <text class="page-module-invite-share-btns__text">{{activityData.invitePageSetting.btnTitle}}</text>
+      </button>
+      <button bindtap="setInviteRecord"  open-type="share" class="page-module-invite-share-btns" wx:else="{{!userStatus}}">
+        <text class="page-module-invite-share-btns__icon-wx"></text>
+        <text class="page-module-invite-share-btns__text">{{activityData.invitePageSetting.btnTitle}}</text>
+      </button>
+    </view>
+  </view>
+
+
+
+
+</view>

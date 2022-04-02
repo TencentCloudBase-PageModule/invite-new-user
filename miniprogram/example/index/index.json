@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "invitePrize":"../../components/invitePrize/index"
+   
+  }
+}

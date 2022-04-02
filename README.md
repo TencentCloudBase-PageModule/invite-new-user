@@ -1,1 +1,10 @@
-# invite-new-user
+# 邀请有礼
+
+## 概述
+
+## 资源
+
+1. [小程序源码组件](./miniprogram/)
+2. [自定义接口及B端云函数示例](./function/)
+3. [设计文档](./docs/)
+4. [管理端配置说明](./docs/admin)

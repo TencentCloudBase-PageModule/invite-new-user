@@ -1,0 +1,95 @@
+.page-module-invite-dialog {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  padding: 0 40rpx;
+  text-align: center;
+}
+
+.page-module-invite-dialog.show {
+  display: inline-block;
+}
+.page-module-invite-dialog::before{
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.page-module-invite-dialog-inner {
+  /* height: 100%; */
+  width: 650rpx;
+  display: inline-block;
+  vertical-align: middle;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 52rpx 60rpx 56rpx;
+  box-sizing: border-box;
+  position: relative;
+  
+}
+.page-module-invite-dialog-inner::before{
+  content: '';
+  position: absolute;
+  width: 750rpx;
+  height: 172rpx;
+  background-image: url(https://imgcache.qq.com/open_proj/proj_qcloud_v2/scene-module/Invite-prize/miniprogram/images/invite-dialog-hd.png);
+  background-size:100% 100%;
+  background-repeat: no-repeat;
+  left: -48rpx;
+  top: -40rpx;
+}
+
+
+.page-module-invite-dialog__title{
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #501D00;
+}
+.page-module-invite-dialog__reward{
+  width: 532rpx;
+  height: 214rpx;
+  background-image: url(https://imgcache.qq.com/open_proj/proj_qcloud_v2/scene-module/Invite-prize/miniprogram/images/invite-dialog-reward-bg.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin-top: 32rpx;
+  text-align: center;
+}
+.page-module-invite-dialog__reward::before{
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  width: 0;
+  height: 100%;
+}
+.page-module-invite-dialog__reward.integral-num .page-module-invite-top-hd__integral-text{
+    font-size: 144rpx;
+}
+.page-module-invite-top-hd__integral{
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 0;
+}
+.page-module-invite-dialog__btns{
+    margin-top: 36rpx;
+    width: 100%;
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    background: rgb(255,130,103);
+    background: -moz-linear-gradient(top,  rgba(255,130,103,1) 0%, rgba(255,54,88,1) 100%); 
+    background: -webkit-linear-gradient(top,  rgba(255,130,103,1) 0%,rgba(255,54,88,1) 100%); 
+    background: linear-gradient(to bottom,  rgba(255,130,103,1) 0%,rgba(255,54,88,1) 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8267', endColorstr='#ff3658',GradientType=0 ); 
+    box-shadow: 0 3px 5px 0 rgba(255,74,74,0.6);
+    border-radius: 44rpx;
+    color: #fff;
+    font-size: 32rpx;
+}

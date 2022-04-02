@@ -1,0 +1,60 @@
+<view class="page-module-invite-wrap">
+  <view class="page-module-invite-top">
+    <!-- 页面金币 start -->
+    <view class="page-module-invite-top-dot dot--s position-left"></view>
+    <view class="page-module-invite-top-dot dot--m postion-right-top"></view>
+    <view class="page-module-invite-top-dot dot--s postion-right-bottom"></view>
+
+    <view class="page-module-invite-top-gold gold-blurry-left"></view>
+    <view class="page-module-invite-top-gold gold-blurry-right"></view>
+    <view class="page-module-invite-top-gold gold-round-right"></view>
+
+    <!-- 页面金币 end -->
+
+    <view class="page-module-invite-accept__user">
+      <image class="page-module-invite-accept__user-avator" src="{{userInfo.avatar}}" />
+      <view class="page-module-invite-accept__user-message">
+        {{activityData.inviteesPageSetting.title}}
+      </view>
+    </view>
+
+    <view class="page-module-invite-top-box-wrap accept">
+      <view class="page-module-invite-top-box ">
+        <!-- 
+          积分例(3000积分)文案 添加 integral-num 类名
+          如果文案不带积分 就不需要加 integral-num
+          -->
+        <view class="page-module-invite-top__hd integral-num">
+          <view class="page-module-invite-top-hd__desc"> {{activityData.inviteesPageSetting.copywriting[0]}}</view>
+          <view class="page-module-invite-top-hd__integral" wx:if="{{activityData.inviteesPrizeInfo.prizeType === 'virtualGoods'}}">
+            <text class="page-module-invite-top-hd__integral-text">{{activityData.inviteesPrizeInfo.faceValue}}</text>
+            <text class="page-module-invite-top-hd__integral-unit">积分</text>
+          </view>
+          <view class="page-module-invite-top-hd__integral" wx:if="{{activityData.inviteesPrizeInfo.prizeType === 'goods'}}">
+            <text class="page-module-invite-top-hd__integral-text">{{activityData.inviteesPrizeInfo.prizeName}}</text>
+          </view>
+          <!-- <view class="page-module-invite-top-hd__btn" bind:tap="openDialog">限时领取</view> -->
+          <view class="page-module-invite-top-hd__desc"> {{activityData.inviteesPageSetting.copywriting[1]}}</view>
+
+        </view>
+        <view class="page-module-invite-top__bd">
+          <view class="page-module-invite-share-btns">
+            <text class="page-module-invite-share-btns__text" bind:tap="openDialog">{{activityData.inviteesPageSetting.btnTitle}}</text>
+          </view>
+        </view>
+
+      </view>
+    </view>
+  
+  </view>
+</view>
+<Dialog phoneNum = "{{phoneNum}}" userCode="{{userCode}}" prizeInfo="{{activityData.inviteesPrizeInfo}}" setting="{{activityData.acceptInviteSetting}}" show="{{dialogShow}}" bind:closeDialog="doCloseDialog" activity = "{{activityData}}" bind:custom = "taskSucCustom"></Dialog>
+
+<inviteHalfScreenDialog halfShow="{{getPhoneDialog}}" class="page-module-invite-halfDialog" bind:close = "closeGetPhoneDailog">
+  <image class="page-module-invite-halfDialog__avator" src= "{{activityData.getPhoneNumPageSetting.logo}}" />
+  <view class="page-module-invite-halfDialog__title">{{activityData.getPhoneNumPageSetting.title}}</view>
+  <view class="page-module-invite-halfDialog__desc">{{activityData.getPhoneNumPageSetting.guideCopy}}</view>
+  <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="page-module-invite-share-btns"> 
+    <text class="page-module-invite-share-btns__text">{{activityData.getPhoneNumPageSetting.btnTitle}}</text>
+  </button>
+</inviteHalfScreenDialog>

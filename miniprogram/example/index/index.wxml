@@ -1,0 +1,1 @@
+<invitePrize bind:share="onShare" bind:code="onUser" footerShow = "{{footerBtn}}" ></invitePrize>
