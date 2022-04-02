@@ -38,6 +38,6 @@
 1. 【必选】[邀请有礼主界面配置](./components/invitePrize)
 2. 【必选】[接受邀请界面配置](./components/inviteAccept)
 3. 【必选】管理端配置活动
-4. 【必选】[业务系统联动打通](https://github.com/TencentCloudBase-PageModule/invite-new-user/tree/master/docs/diy.md)
+4. 【必选】[业务系统联动打通](https://github.com/TencentCloudBase-PageModule/invite-new-user/blob/dev/docs/diy.md)
    1. 配置自定义接口 [邀请有礼-发放积分send_face_value接口] 到云函数，自行发奖
    2. 配置自定义接口 [邀请有礼-发放奖品send_prize接口] 到云函数，自行发奖
