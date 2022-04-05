@@ -10,18 +10,18 @@
 ```js
 // 在自身业务代码中引入pageModuleSDK方法 设置每晚定时触发
 const  { PageModule } = require('@cloudbase/page-module');
-const pageModule = new PageModule('integral-module');
+const pageModule = new PageModule('invite-new-user');
 module.exports = async function demo(params, context) {
     await  pageModule.callMethod('timedTask')
 }
 ```
 
-### 2. 自定义任务 `setInviteStatus` 设置用户任务状态
+### 2. 自定义任务状态 `setInviteStatus` 设置用户任务状态
 
 ```js
 // 在自身业务代码中引入pageModuleSDK方法 设置每晚定时触发
 const  { PageModule } = require('@cloudbase/page-module');
-const pageModule = new PageModule('integral-module');
+const pageModule = new PageModule('invite-new-user');
 module.exports = async function demo(params, context) {
     await  pageModule.callMethod('setInviteStatus'{
         openId: params.openId,
@@ -30,7 +30,9 @@ module.exports = async function demo(params, context) {
     })
 }
 ```
+
 ### 3. 自定义接口
+
 #### 3.1 `send_prize` 发奖接口
 
 兑换虚拟类型的礼物时，兑换接口内会调用`send_prize`接口，该接口可连接到云开发的云函数，业务在云函数内实现发奖逻辑。
@@ -39,6 +41,7 @@ module.exports = async function demo(params, context) {
 
 兑换积分类型的礼物时，兑换接口内会调用`send_prize`接口，该接口可连接到云开发的云函数，业务在云函数内实现发奖逻辑。
 
-### 3.3 业务方检查用户是否被邀请
+### 3.3 `check_is_invite` 业务方检查用户是否被邀请
+
 模块将首先判断用户是否已在邀请有礼模块内被邀请，如果未被邀请，则会再去调用业务方接口让业务方来判断该用户是否可被邀请。
 如果该用户为黑产或者已经注册的用户，业务方可直接返回不可被邀请。

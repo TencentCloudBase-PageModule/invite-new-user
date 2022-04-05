@@ -6,7 +6,7 @@
 
 ```
    ├─ components 
-   │  ├─ _bas e# 基础组件，外部请勿依赖
+   │  ├─ _base # 基础组件，外部请勿依赖
    │  │  ├─ halfScreenDialog
    │  │  ├─ inviteCard
    │  │  ├─ inviteDialog
@@ -42,4 +42,3 @@
    1. 配置自定义接口 发放积分send_face_value接口、发放奖品send_prize接口 到云函数
    2. 设置定时云函数，调用邀请有礼的服务器端接口 `timedTask` 进行数据统计
    3. 自定义任务：系统支持接受邀请即完成，业务也可以自定义完成任务条件。在任务完成时调用 `setInviteStatus`  设置用户任务状态
-

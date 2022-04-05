@@ -1,14 +1,10 @@
 # 邀请有礼首页组件
 
-
-
 ## 事件属性
 
 | 属性   | 类型   | 示例                          | 说明               |
 | ------ | ------ | ----------------------------- | ------------------ |
 | custom | string | bind:custom = "taskSucCustom" | 领取成功后触发事件 |
-
-
 
 ## 组件属性
 
@@ -22,9 +18,9 @@
 ```js
 // index.wxml
 <inviteAccept 
-		userCode = "{{userCode}}"
-		ownJumpUrl = "/scene-module/invite/example/index/index" 
-		bind:custom = "taskSucCustom"
+  userCode = "{{userCode}}"
+  ownJumpUrl = "/page_module/invite/example/index/index" 
+  bind:custom = "taskSucCustom"
 >
 </inviteAccept>
 // index.js
@@ -51,8 +47,6 @@ Page({
   }
 })
 ```
-
-
 
 ## 注意事项
 
