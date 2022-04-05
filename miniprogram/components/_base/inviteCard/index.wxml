@@ -1,0 +1,15 @@
+<view class="page-module-invite-card {{extclass}}">
+    <view class="page-module-invite-card-hd {{centerAlign? 'is-center':''}}">
+      <block wx:if="{{leftAlign}}">
+        <text class="page-module-invite-icon-card"></text>
+        <text class="page-module-invite-card-hd-title">{{cardTitle}}</text>
+      </block>
+      <view wx:if="{{centerAlign}}" class="" >
+        <text class="page-module-invite-card-hd-title">{{cardTitle}}</text>
+      </view>
+    </view>
+    <view class="page-module-invite-card-bd">
+      <slot></slot>
+    </view>
+
+  </view>

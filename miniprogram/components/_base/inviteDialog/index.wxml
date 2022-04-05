@@ -1,0 +1,21 @@
+
+<view class="page-module-invite-dialog {{show?'show':''}}" >
+
+    <view class="page-module-invite-dialog-inner">
+      <view class="page-module-invite-dialog__title">{{setting.dialogTitle}}</view>
+
+      <!-- 如果文案不带积分 就不需要加 integral-num -->
+        <view class=" page-module-invite-dialog__reward integral-num" wx:if="{{prizeInfo.prizeType === 'virtualGoods'}}">
+          <view class="page-module-invite-top-hd__integral">
+            <text class="page-module-invite-top-hd__integral-text">{{prizeInfo.faceValue}}</text>
+            <text class="page-module-invite-top-hd__integral-unit">积分</text>
+          </view>
+        </view>
+        <view class=" page-module-invite-dialog__reward " wx:else="{{prizeInfo.prizeType === 'virtualGoods'}}">
+          <view class="page-module-invite-top-hd__integral">
+            <text class="page-module-invite-top-hd__integral-text">{{prizeInfo.prizeName}}</text>
+          </view>
+        </view>
+      <view class="page-module-invite-dialog__btns" bindtap="getUserProfile">{{setting.btnTitle}}</view>
+    </view>
+</view>

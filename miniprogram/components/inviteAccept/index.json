@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "Dialog":"../_base/inviteDialog/index",
+    "inviteHalfScreenDialog":"../_base/halfScreenDialog/index"
+  }
+}
